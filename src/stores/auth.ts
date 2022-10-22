@@ -1,4 +1,6 @@
+import useWindowPopup from "@/hooks/useWindowPopup";
 import { defineStore } from "pinia";
+import config from "@/config";
 
 const useAuthStore = defineStore("auth", {
   state: () => ({ _user: null, _token: null }),
@@ -8,8 +10,12 @@ const useAuthStore = defineStore("auth", {
   },
   actions: {
     async authorizeGithub() {
-      // TODO: implement
-      console.log("authorizeGithub");
+      const authorizationUrl = config.authorizationUrl();
+      const windowPopup = useWindowPopup(authorizationUrl, 600, 600);
+      windowPopup.open();
+      windowPopup.channel.onmessage = (event) => {
+        // Todo: handle the event
+      };
     },
   },
 });
