@@ -1,53 +1,52 @@
-interface IWindowPopup {
-  open: () => void;
+import { ref } from "vue";
+
+interface WindowPopup {
+  open: (url: string, width: number, height: number) => void;
   close: () => void;
+  onMessage: (callback: (message: any) => void) => void;
   sendMessage: (message: any) => void;
-  channel: BroadcastChannel;
 }
 
-class useWindowPopup implements IWindowPopup {
-  channel: BroadcastChannel;
+/**
+ *
+ * @returns
+ */
+function useWindowPopup(): WindowPopup {
+  let channel = ref(new BroadcastChannel("window-popup"));
+
   /**
    * Open a popup window with the given URL.
    * @property {String} url - The URL to open in the popup window
    * @property {Number} width - The width of the popup window
    * @property {Number} height - The height of the popup window
    */
-  constructor(
-    private url: string,
-    private width: number,
-    private height: number
-  ) {
-    this.channel = new BroadcastChannel("window-popup");
+  function open(url: string, width: number, height: number) {
+    const popupLeft = screen.width / 2 - width / 2;
+    const popupTop = screen.height / 2 - height / 2;
+    const features = `width=${width},height=${height},left=${popupLeft},top=${popupTop}`;
+    window.open(url, "popup", features);
   }
   /**
-   * Open the popup window.
+   * close the popup window.
    */
-  open() {
-    window.open(this.url, "popup", this.features);
-  }
-  /**
-   * Open the popup window.
-   */
-  close() {
+  function close() {
     window.close();
   }
   /**
-   * send message to broadcast channel
+   * send message to the current popup channel
+   * @property {any} message - The message to send to the popup window
    */
-  sendMessage(message: any) {
-    this.channel.postMessage(message);
-  }
 
-  private get features() {
-    return `width=${this.width},height=${this.height},left=${this.popupLeft},top=${this.popupTop}`;
+  function sendMessage(message: any) {
+    channel.value.postMessage(message);
   }
-  private get popupLeft() {
-    return screen.width / 2 - this.width / 2;
-  }
-  private get popupTop() {
-    return screen.height / 2 - this.height / 2;
-  }
+  /*
+   * listen to messages from the popup window
+   * @property {Function} callback - The callback function to execute when a message is received
+   * */
+  const onMessage = (callback: any) => (channel.value.onmessage = callback);
+
+  return { open, close, sendMessage, onMessage };
 }
 
 export default useWindowPopup;
