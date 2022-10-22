@@ -2,7 +2,7 @@ const mode = import.meta?.env?.MODE || "development";
 const origin =
   typeof window !== "undefined"
     ? window?.location?.origin
-    : "http://localhost:5173";
+    : "https://youcan.yudax.me";
 
 const config = {
   baseURL: "https://github.com",
