@@ -1,4 +1,5 @@
-const mode = import.meta?.env?.MODE ? "development" : "production";
+const mode = import.meta?.env?.PROD ? "production" : "development";
+
 const origin =
   typeof window !== "undefined"
     ? window?.location?.origin
