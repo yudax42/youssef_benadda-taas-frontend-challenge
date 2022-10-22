@@ -2,7 +2,7 @@
   "name": "youssef_benadda-taas-frontend-challenge",
   "version": "0.0.0",
   "scripts": {
-    "dev": "vite",
+    "dev": "vite & wrangler pages dev ./dist --port 1337",
     "build": "run-p type-check build-only",
     "preview": "vite preview",
     "build-only": "vite build",
@@ -10,6 +10,8 @@
     "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --fix --ignore-path .gitignore"
   },
   "dependencies": {
+    "@vueuse/core": "^9.3.1",
+    "@vueuse/router": "^9.3.1",
     "pinia": "^2.0.23",
     "vue": "^3.2.41",
     "vue-router": "^4.1.5"

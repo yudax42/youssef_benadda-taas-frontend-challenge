@@ -1,6 +1,6 @@
 ## Tasks
 
-- [ ] Github OAuth implementation
+- [x] Github OAuth implementation
 - [ ] Create API service
 - [ ] Setup app data source
 - [ ] Home Page

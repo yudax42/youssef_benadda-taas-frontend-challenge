@@ -5,6 +5,9 @@ import authenticatedLayout from "@/layouts/authenticated.vue";
 // Pages
 import AuthPage from "@/pages/AuthPage.vue";
 import HomePage from "@/pages/HomePage.vue";
+import OauthPage from "@/pages/OauthPage.vue";
+
+import useAuthentication from "@/hooks/routes/auth";
 
 const routes = [
   {
@@ -19,6 +22,7 @@ const routes = [
         },
       },
     ],
+    ...useAuthentication(),
   },
   {
     path: "/auth",
@@ -27,6 +31,16 @@ const routes = [
       {
         path: "",
         component: AuthPage,
+      },
+    ],
+  },
+  {
+    path: "/oauth",
+    component: defaultLayout,
+    children: [
+      {
+        path: "callback",
+        component: OauthPage,
       },
     ],
   },
