@@ -11,7 +11,7 @@ const useAuthStore = defineStore("auth", {
   actions: {
     async authorizeGithub() {
       const authorizationUrl = config.authorizationUrl();
-      const windowPopup = useWindowPopup(authorizationUrl, 600, 600);
+      const windowPopup = new useWindowPopup(authorizationUrl, 600, 600);
       windowPopup.open();
       windowPopup.channel.onmessage = (event) => {
         // Todo: handle the event

@@ -1,4 +1,4 @@
-interface WindowPopup {
+interface IWindowPopup {
   open: () => void;
   close: () => void;
   sendMessage: (message: any) => void;
@@ -10,36 +10,43 @@ interface WindowPopup {
  * @param url The URL to open in the popup window.
  * @param width The width of the popup window.
  * @param height The height of the popup window.
- * @returns BroadcastChannel to communicate with the popup window.
+ * @method open Open the popup window.
+ * @method close Close the popup window.
+ * @method sendMessage Send a message to the popup window.
+ * @property channel The BroadcastChannel to communicate with the popup window.
  */
 
-function useWindowPopup(
-  url: string,
-  width: number,
-  height: number
-): WindowPopup {
-  const popupLeft = screen.width / 2 - width / 2;
-  const popupTop = screen.height / 2 - height / 2;
-  const channel = new BroadcastChannel("window-popup");
-
+class useWindowPopup implements IWindowPopup {
+  channel: BroadcastChannel;
+  constructor(
+    private url: string,
+    private width: number,
+    private height: number
+  ) {
+    this.channel = new BroadcastChannel("window-popup");
+  }
   // Open the popup window.
-  const open = () => {
-    window.open(
-      url,
-      "popup",
-      `width=${width},height=${height},left=${popupLeft},top=${popupTop}`
-    );
-  };
+  open() {
+    window.open(this.url, "popup", this.features);
+  }
   // Close the popup window.
-  const close = () => {
+  close() {
     window.close();
-  };
+  }
   // Send a message to the current popup channel
-  const sendMessage = (message: any) => {
-    channel.postMessage(message);
-  };
+  sendMessage(message: any) {
+    this.channel.postMessage(message);
+  }
 
-  return { open, close, sendMessage, channel };
+  private get features() {
+    return `width=${this.width},height=${this.height},left=${this.popupLeft},top=${this.popupTop}`;
+  }
+  private get popupLeft() {
+    return screen.width / 2 - this.width / 2;
+  }
+  private get popupTop() {
+    return screen.height / 2 - this.height / 2;
+  }
 }
 
 export default useWindowPopup;
