@@ -1,5 +1,3 @@
-const mode = import.meta?.env?.PROD ? "production" : "development";
-
 const origin =
   typeof window !== "undefined"
     ? window?.location?.origin
@@ -14,9 +12,9 @@ const config = {
     return `${this.baseURL}/login/oauth/authorize?client_id=${this.clientId}&scope=repo&redirect_uri=${this.redirectUri}`;
   },
   proxy:
-    mode === "development"
-      ? "http://localhost:1337/api/getToken"
-      : "/api/getToken",
+    origin === "https://youcan.yudax.me"
+      ? "/api/getToken"
+      : "http://localhost:1337/api/getToken",
 };
 
 export default config;
