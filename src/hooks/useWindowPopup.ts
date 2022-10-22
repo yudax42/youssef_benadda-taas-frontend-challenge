@@ -5,19 +5,14 @@ interface IWindowPopup {
   channel: BroadcastChannel;
 }
 
-/**
- * Open a popup window with the given URL.
- * @param url The URL to open in the popup window.
- * @param width The width of the popup window.
- * @param height The height of the popup window.
- * @method open Open the popup window.
- * @method close Close the popup window.
- * @method sendMessage Send a message to the popup window.
- * @property channel The BroadcastChannel to communicate with the popup window.
- */
-
 class useWindowPopup implements IWindowPopup {
   channel: BroadcastChannel;
+  /**
+   * Open a popup window with the given URL.
+   * @property {String} url - The URL to open in the popup window
+   * @property {Number} width - The width of the popup window
+   * @property {Number} height - The height of the popup window
+   */
   constructor(
     private url: string,
     private width: number,
@@ -25,15 +20,21 @@ class useWindowPopup implements IWindowPopup {
   ) {
     this.channel = new BroadcastChannel("window-popup");
   }
-  // Open the popup window.
+  /**
+   * Open the popup window.
+   */
   open() {
     window.open(this.url, "popup", this.features);
   }
-  // Close the popup window.
+  /**
+   * Open the popup window.
+   */
   close() {
     window.close();
   }
-  // Send a message to the current popup channel
+  /**
+   * send message to broadcast channel
+   */
   sendMessage(message: any) {
     this.channel.postMessage(message);
   }
