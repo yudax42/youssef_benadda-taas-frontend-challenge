@@ -13,8 +13,6 @@
 
 ## Quick Links
 
----
-
 - [OAuth](https://docs.github.com/en/developers/apps/building-oauth-apps/creating-an-oauth-app)
 - [API - user](https://docs.github.com/en/rest/users/users)
 - [API - repositories](https://docs.github.com/en/rest/repos/repos#list-repositories-for-the-authenticated-user)
