@@ -1,46 +1,34 @@
-# youssef_benadda-taas-frontend-challenge
+## Tasks
 
-This template should help get you started developing with Vue 3 in Vite.
+---
 
-## Recommended IDE Setup
+[ ] Github OAuth implementation
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
+[ ] Create API service
 
-## Type Support for `.vue` Imports in TS
+[ ] Setup app data source
 
-TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin) to make the TypeScript language service aware of `.vue` types.
+[ ] Home Page
 
-If the standalone TypeScript plugin doesn't feel fast enough to you, Volar has also implemented a [Take Over Mode](https://github.com/johnsoncodehk/volar/discussions/471#discussioncomment-1361669) that is more performant. You can enable it by the following steps:
+- List repositories with filters and autocomplete
+- Commit history with infinite scroll
+- Branch switching
 
-1. Disable the built-in TypeScript Extension
-    1) Run `Extensions: Show Built-in Extensions` from VSCode's command palette
-    2) Find `TypeScript and JavaScript Language Features`, right click and select `Disable (Workspace)`
-2. Reload the VSCode window by running `Developer: Reload Window` from the command palette.
+[ ] User Interface enhancement
 
-## Customize configuration
+[ ] Create Documentation
 
-See [Vite Configuration Reference](https://vitejs.dev/config/).
+[ ] Test & Deployment
 
-## Project Setup
+## Quick Links
 
-```sh
-npm install
-```
+---
 
-### Compile and Hot-Reload for Development
+- [OAuth](https://docs.github.com/en/developers/apps/building-oauth-apps/creating-an-oauth-app)
+- [API - user](https://docs.github.com/en/rest/users/users)
+- [API - repositories](https://docs.github.com/en/rest/repos/repos#list-repositories-for-the-authenticated-user)
 
-```sh
-npm run dev
-```
+- [API - branches](https://docs.github.com/en/rest/branches/branches)
+- [API - commits](https://docs.github.com/en/rest/commits/commits)
 
-### Type-Check, Compile and Minify for Production
-
-```sh
-npm run build
-```
-
-### Lint with [ESLint](https://eslint.org/)
-
-```sh
-npm run lint
-```
+* [UX - Mockup](https://app.moqups.com/sZB0qKZrxH/view/page/a34175fd3)
