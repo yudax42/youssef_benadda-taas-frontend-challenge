@@ -7,6 +7,8 @@ import AuthPage from "@/pages/AuthPage.vue";
 import HomePage from "@/pages/HomePage.vue";
 import OauthPage from "@/pages/OauthPage.vue";
 
+import useAuthentication from "@/hooks/routes/auth";
+
 const routes = [
   {
     path: "/",
@@ -20,6 +22,7 @@ const routes = [
         },
       },
     ],
+    ...useAuthentication(),
   },
   {
     path: "/auth",

@@ -2,12 +2,14 @@ import useWindowPopup from "@/hooks/useWindowPopup";
 import { defineStore } from "pinia";
 import config from "@/config";
 import type { AuthorizationResult, AuthState } from "@/types/auth";
+import router from "@/router";
 
 const useAuthStore = defineStore("auth", {
   state: () => ({ _user: null, _token: null } as AuthState),
   getters: {
     user: (state) => state._user,
     token: (state) => state._token,
+    isAuthenticated: (state) => !!state._token,
   },
   actions: {
     setToken(token: string) {
@@ -22,6 +24,7 @@ const useAuthStore = defineStore("auth", {
         console.log("message", message);
         if (message.type === "authorization_success") {
           this.setToken(String(message.token));
+          router.push("/");
         } else {
           // TODO: Handle error
         }
