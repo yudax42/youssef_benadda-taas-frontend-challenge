@@ -1,6 +1,12 @@
 import { useRouteQuery } from "@vueuse/router";
 import type { AuthorizationResult } from "@/types/auth";
+import getGithubAccessToken from "@/services/proxy";
+import config from "@/config";
 
+/**
+ * get code from url query and exchange it for access token
+ *@returns {AuthorizationResult} - The authorization result
+ */
 async function useTokenFetcher(): Promise<AuthorizationResult> {
   const code = useRouteQuery("code");
   const error = useRouteQuery("error");
@@ -13,11 +19,15 @@ async function useTokenFetcher(): Promise<AuthorizationResult> {
       errorDescription: errorDescription.value,
     };
   }
-  // TODO: exchange code for token
+  // exchange code for token
+  const data = await getGithubAccessToken(
+    String(code.value),
+    config.redirectUri
+  );
 
   return {
     type: "authorization_success",
-    token: code.value,
+    token: data.access_token,
   };
 }
 

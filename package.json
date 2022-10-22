@@ -2,7 +2,7 @@
   "name": "youssef_benadda-taas-frontend-challenge",
   "version": "0.0.0",
   "scripts": {
-    "dev": "vite",
+    "dev": "vite & wrangler pages dev ./dist --port 1337",
     "build": "run-p type-check build-only",
     "preview": "vite preview",
     "build-only": "vite build",

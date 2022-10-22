@@ -1,3 +1,5 @@
+const mode = import.meta?.env?.MODE || "development";
+
 const config = {
   baseURL: "https://github.com",
   apiBaseURL: "https://api.github.com",
@@ -6,6 +8,10 @@ const config = {
   authorizationUrl: function () {
     return `${this.baseURL}/login/oauth/authorize?client_id=${this.clientId}&scope=repo&redirect_uri=${this.redirectUri}`;
   },
+  proxy:
+    mode === "development"
+      ? "http://localhost:1337/api/getToken"
+      : "/api/getToken",
 };
 
 export default config;

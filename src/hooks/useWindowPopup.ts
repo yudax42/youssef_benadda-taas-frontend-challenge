@@ -7,10 +7,6 @@ interface WindowPopup {
   sendMessage: (message: any) => void;
 }
 
-/**
- *
- * @returns
- */
 function useWindowPopup(): WindowPopup {
   let channel = ref(new BroadcastChannel("window-popup"));
 
