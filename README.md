@@ -1,8 +1,8 @@
 ## Tasks
 
 - [x] Github OAuth implementation
-- [ ] Create API service
-- [ ] Setup app data source
+- [x] Create API service
+- [x] Setup app data source
 - [ ] Home Page
   - List repositories with filters and autocomplete
   - Commit history with infinite scroll
