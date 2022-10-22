@@ -1,5 +1,5 @@
 <template>
   <main>
-    <h1>Hello World</h1>
+    <h1 class="text-3xl">Hello World</h1>
   </main>
 </template>

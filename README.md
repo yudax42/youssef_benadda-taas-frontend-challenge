@@ -1,24 +1,15 @@
 ## Tasks
 
----
-
-[ ] Github OAuth implementation
-
-[ ] Create API service
-
-[ ] Setup app data source
-
-[ ] Home Page
-
-- List repositories with filters and autocomplete
-- Commit history with infinite scroll
-- Branch switching
-
-[ ] User Interface enhancement
-
-[ ] Create Documentation
-
-[ ] Test & Deployment
+- [ ] Github OAuth implementation
+- [ ] Create API service
+- [ ] Setup app data source
+- [ ] Home Page
+  - List repositories with filters and autocomplete
+  - Commit history with infinite scroll
+  - Branch switching
+- [ ] User Interface enhancement
+- [ ] Create Documentation
+- [ ] Test & Deployment
 
 ## Quick Links
 
