@@ -1,14 +1,15 @@
 <script lang="ts" setup>
 import AppButton from "@/components/AppButton.vue";
+import useAuthStore from "@/stores/auth";
 
-const authorizeGithub = () => {
-  console.log("...");
-};
+const authStore = useAuthStore();
 </script>
 
 <template>
   <main>
     <h1 class="text-xl">Auth Page</h1>
-    <AppButton @click="authorizeGithub">Authorize my Github account</AppButton>
+    <AppButton @click="authStore.authorizeGithub"
+      >Authorize my Github account</AppButton
+    >
   </main>
 </template>
