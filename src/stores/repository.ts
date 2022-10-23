@@ -11,18 +11,18 @@ import { defineStore } from "pinia";
 const useRepoStore = defineStore("repo", {
   state: () => ({
     _repos: {} as Record<string, Repository>,
-    _currentRepo: `` as string,
-    _currentBranch: `` as string,
     _branches: {} as Record<string, Branch>,
     _commits: {} as Record<string, Commits>,
+    _currentRepo: `` as string,
+    _currentBranch: `` as string,
   }),
 
   getters: {
     repos: (state) => Object.values(state._repos),
-    currentRepo: (state) => state._repos[state._currentRepo],
-    currentBranch: (state) => state._currentBranch,
     branches: (state) => Object.values(state._branches),
     commits: (state) => Object.values(state._commits),
+    currentRepo: (state) => state._repos[state._currentRepo],
+    currentBranch: (state) => state._currentBranch,
   },
 
   actions: {
