@@ -4,7 +4,7 @@ import { defineProps, ref } from "vue";
 let emit = defineEmits(["update"]);
 
 interface ListBox {
-  selected: string | null;
+  selected?: string | null;
   options: Record<string, string>[];
 }
 

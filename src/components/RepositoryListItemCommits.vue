@@ -1,18 +1,17 @@
 <script lang="ts" setup>
 import type { Commits } from "@/types/repository";
-import { defineProps, ref, watch } from "vue";
+import { defineProps, ref } from "vue";
 import { useInfiniteScroll } from "@vueuse/core";
 
 const emit = defineEmits(["nextPage"]);
 const commitsPage = ref(1);
 
-const props = defineProps<{
+defineProps<{
   branch: string;
   commits: Commits[];
 }>();
 
 const el = ref<HTMLElement>();
-
 useInfiniteScroll(
   el,
   () => {

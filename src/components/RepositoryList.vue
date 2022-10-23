@@ -1,20 +1,32 @@
 <script lang="ts" setup>
 import { storeToRefs } from "pinia";
 import useRepoStore from "@/stores/repository";
+import AppCombobox from "./AppCombobox.vue";
+import { computed } from "vue";
 
 const repoStore = useRepoStore();
-const { repos } = storeToRefs(repoStore);
+const { repos, currentRepo } = storeToRefs(repoStore);
 await repoStore.getRepos();
+
+const repositoryList = computed(() => {
+  return repos.value.map((repo) => {
+    return {
+      name: repo.name,
+      value: repo.id,
+    };
+  });
+});
 </script>
 
 <template>
-  <ul>
-    <li
-      v-for="repo in repos"
-      :key="repo.id"
-      @click="repoStore.setCurrentRepo(repo.id)"
-    >
-      {{ repo.name }}
-    </li>
-  </ul>
+  <div>
+    <h3>Search a repository</h3>
+    <AppCombobox
+      :options="repositoryList"
+      :selected-option="currentRepo?.name"
+      :filters="[{ name: 'Name', value: 'name' }]"
+      selected-filter="name"
+      @select="repoStore.setCurrentRepo"
+    />
+  </div>
 </template>
