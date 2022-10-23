@@ -1,8 +1,10 @@
 <script lang="ts" setup>
 import { storeToRefs } from "pinia";
 import useRepoStore from "@/stores/repository";
+
 const repoStore = useRepoStore();
-let { repos } = storeToRefs(repoStore);
+const { repos } = storeToRefs(repoStore);
+await repoStore.getRepos();
 </script>
 
 <template>

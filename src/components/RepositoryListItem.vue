@@ -17,8 +17,6 @@ const branchesList = computed(() => {
     };
   });
 });
-
-await repoStore.getRepos();
 </script>
 
 <template>
