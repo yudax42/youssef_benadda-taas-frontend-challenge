@@ -4,8 +4,7 @@ import { storeToRefs } from "pinia";
 import useRepoStore from "@/stores/repository";
 
 const repoStore = useRepoStore();
-let { repos, currentRepo, branches, commits, currentBranch } =
-  storeToRefs(repoStore);
+let { repos, branches, commits, currentBranch } = storeToRefs(repoStore);
 
 onBeforeMount(async () => {
   await repoStore.getRepos();
@@ -28,7 +27,11 @@ onBeforeMount(async () => {
       <div>
         <h4 class="text-xl font-bold">Branches</h4>
         <ul>
-          <li v-for="branch in branches" :key="branch.name">
+          <li
+            v-for="branch in branches"
+            :key="branch.name"
+            @click="repoStore.setCurrentBranch(branch.commit.sha)"
+          >
             {{ branch.name }}
           </li>
         </ul>

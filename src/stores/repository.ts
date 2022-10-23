@@ -40,12 +40,13 @@ const useRepoStore = defineStore("repo", {
       this._branches = normalize(serializedBranches, "commit.sha");
       this._currentBranch = branches[0].commit.sha;
     },
-    async getCommits(page: number = 1) {
+
+    async getCommits(page: number = 1, master?: boolean) {
       const commits = await api.getCommits(
         this.currentRepo.name,
         this.currentRepo.owner.login,
         page,
-        this._currentBranch
+        master ? "" : this._currentBranch
       );
       const serializedCommits = commits.map(commitSerializer);
       this._commits = normalize(serializedCommits, "sha");
@@ -53,6 +54,10 @@ const useRepoStore = defineStore("repo", {
     setCurrentRepo(id: string) {
       this._currentRepo = id;
       this.getBranches();
+      this.getCommits(1, true);
+    },
+    setCurrentBranch(sha: string) {
+      this._currentBranch = sha;
       this.getCommits();
     },
   },
