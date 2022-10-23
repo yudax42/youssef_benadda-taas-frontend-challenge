@@ -7,7 +7,8 @@ interface ListBox {
   selected: string | null;
   options: Record<string, string>[];
 }
-const props = defineProps<ListBox>();
+
+defineProps<ListBox>();
 
 function selectOption(event: any) {
   emit("update", event.target.value);
@@ -18,7 +19,7 @@ function selectOption(event: any) {
   <div>
     <select @change="selectOption" name="" id="">
       <option
-        v-for="(option, i) in props.options"
+        v-for="(option, i) in options"
         :key="i"
         :value="option.value"
         :selected="option.value === selected"

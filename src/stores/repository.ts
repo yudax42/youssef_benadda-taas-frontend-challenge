@@ -31,6 +31,7 @@ const useRepoStore = defineStore("repo", {
       const seralizedRepos = repos.map(repoSerializer);
       this._repos = normalize(seralizedRepos, "id");
     },
+
     async getBranches() {
       const branches = await api.getBranches(
         this.currentRepo.owner.login,
@@ -51,11 +52,13 @@ const useRepoStore = defineStore("repo", {
       const serializedCommits = commits.map(commitSerializer);
       this._commits = normalize(serializedCommits, "sha");
     },
+
     setCurrentRepo(id: string) {
       this._currentRepo = id;
       this.getBranches();
       this.getCommits(1, true);
     },
+
     setCurrentBranch(sha: string) {
       this._currentBranch = sha;
       this.getCommits();
