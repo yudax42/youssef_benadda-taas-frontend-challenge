@@ -1,6 +1,7 @@
 <script lang="ts" setup>
 import useAlerts from "@/hooks/useAlerts";
 import AppAlertsItem from "./AppAlertsItem.vue";
+import FadeInTransition from "./FadeInTransition.vue";
 
 const { alerts } = useAlerts;
 console.log(alerts.value);
@@ -9,11 +10,13 @@ console.log(alerts.value);
 <template>
   <div class="alerts">
     <div class="alerts__container">
-      <AppAlertsItem v-for="(alert, i) in alerts" :key="i" :type="alert.type">
-        <template #message>
-          <span v-html="alert.message" />
-        </template>
-      </AppAlertsItem>
+      <FadeInTransition>
+        <AppAlertsItem v-for="(alert, i) in alerts" :key="i" :type="alert.type">
+          <template #message>
+            <span v-html="alert.message" />
+          </template>
+        </AppAlertsItem>
+      </FadeInTransition>
     </div>
   </div>
 </template>
