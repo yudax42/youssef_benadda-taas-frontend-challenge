@@ -48,13 +48,7 @@ function commitSerializer(commit: Commits): Commits {
   return {
     url: commit.url,
     sha: commit.sha,
-    node_id: commit.node_id,
-    html_url: commit.html_url,
-    comments_url: commit.comments_url,
     commit: commit.commit,
-    author: authorSerializer(commit.author),
-    committer: commit.committer,
-    parents: commit.parents,
   };
 }
 
