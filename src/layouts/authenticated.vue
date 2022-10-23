@@ -10,6 +10,6 @@ import { RouterView } from "vue-router";
 
 <style>
 .app {
-  @apply max-w-5xl mt-32 mx-auto;
+  @apply max-w-5xl  mx-auto;
 }
 </style>
