@@ -8,8 +8,8 @@ const authStore = useAuthStore();
 <template>
   <main class="auth">
     <div class="auth__content">
-      <img class="auth__logo" src="@/assets/logo.png" alt="YouGit" />
-      <h1 class="auth_heading">YouGit</h1>
+      <img class="auth__logo" src="/logo.png" alt="YouGit" />
+      <h1 class="auth__heading">YouGit</h1>
       <AppButton @click="authStore.authorizeGithub"
         >Authorize my Github account</AppButton
       >
@@ -27,7 +27,7 @@ const authStore = useAuthStore();
 .auth .auth__logo {
   @apply w-20 h-20 inline-block;
 }
-.auth .auth_heading {
+.auth .auth__heading {
   @apply text-4xl font-bold text-gray-800  mb-8;
 }
 </style>

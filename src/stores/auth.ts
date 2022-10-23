@@ -6,7 +6,9 @@ import router from "@/router";
 import { userSerializer } from "@/utils/serializer";
 import type User from "@/types/user";
 import api from "@/services/api";
+import useAlert from "@/hooks/useAlerts";
 
+const { addAlert } = useAlert;
 const useAuthStore = defineStore("auth", {
   state: () => ({ _user: null, _token: null } as AuthState),
   getters: {
@@ -34,9 +36,16 @@ const useAuthStore = defineStore("auth", {
         if (message.type === "authorization_success") {
           this.setToken(String(message.token));
           await this.setUser();
+          addAlert({
+            message: "Your Github account was successfully authorized",
+            type: "success",
+          });
           router.push("/");
         } else {
-          // TODO: Handle error
+          addAlert({
+            message: "Authorization failed",
+            type: "error",
+          });
         }
       });
     },

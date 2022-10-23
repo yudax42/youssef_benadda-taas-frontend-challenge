@@ -1,6 +1,7 @@
 <script lang="ts" setup>
 import { computed, defineProps, ref } from "vue";
 import AppListbox from "@/components/AppListbox.vue";
+import randomId from "@/utils/randomId";
 
 const emit = defineEmits(["select"]);
 
@@ -19,10 +20,6 @@ const filtered = computed(() => {
     return option[props.selectedFilter].includes(search.value);
   });
 });
-
-const randomId = () => {
-  return Math.random().toString(36).substr(2, 9);
-};
 
 const selectOption = (value: string) => {
   emit("select", value);

@@ -1,7 +1,9 @@
 import config from "@/config";
 import useAuthStore from "@/stores/auth";
 import type RequestData from "@/types/request";
+import useAlert from "@/hooks/useAlerts";
 
+const { addAlert } = useAlert;
 const headers: any = {
   "Content-Type": "application/json",
   Accept: "application/vnd.github+json",
@@ -22,7 +24,10 @@ async function useRequest<T>(data: RequestData): Promise<T> {
 
   if (res.ok) return (await res.json()) as T;
 
-  // TODO: Handle errors , Show popup
+  addAlert({
+    message: await res.text(),
+    type: "error",
+  });
   throw new Error(res.statusText);
 }
 
