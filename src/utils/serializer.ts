@@ -1,4 +1,4 @@
-import type { Branch, Commits, Repository } from "@/types/repository";
+import type { Author, Branch, Commits, Repository } from "@/types/repository";
 import type User from "@/types/user";
 
 function userSerializer(user: User): User {
@@ -36,18 +36,19 @@ function branchSerializer(branch: Branch): Branch {
     commit: branch.commit,
   };
 }
+function authorSerializer(author: Author): Author {
+  return {
+    name: author.name,
+    avatar_url: author.avatar_url,
+    login: author.login,
+  };
+}
 
 function commitSerializer(commit: Commits): Commits {
   return {
     url: commit.url,
     sha: commit.sha,
-    node_id: commit.node_id,
-    html_url: commit.html_url,
-    comments_url: commit.comments_url,
     commit: commit.commit,
-    author: commit.author,
-    committer: commit.committer,
-    parents: commit.parents,
   };
 }
 

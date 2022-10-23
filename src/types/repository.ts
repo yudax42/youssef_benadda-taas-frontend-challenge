@@ -33,13 +33,7 @@ interface Branch {
 interface Commits {
   url: string;
   sha: string;
-  node_id: string;
-  html_url: string;
-  comments_url: string;
   commit: Commit;
-  author: Author;
-  committer: Author;
-  parents: Parent[];
 }
 
 interface Repository {

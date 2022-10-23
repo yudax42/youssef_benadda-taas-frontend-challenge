@@ -3,7 +3,7 @@
 - [x] Github OAuth implementation
 - [x] Create API service
 - [x] Setup app data source
-- [ ] Home Page
+- [x] Home Page
   - List repositories with filters and autocomplete
   - Commit history with infinite scroll
   - Branch switching
