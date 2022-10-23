@@ -18,10 +18,12 @@ const useAuthStore = defineStore("auth", {
     setToken(token: string) {
       this._token = token;
     },
+
     async setUser() {
       const user: User = await api.getUser();
       this._user = userSerializer(user);
     },
+
     async authorizeGithub() {
       const authorizationUrl = config.authorizationUrl();
       const popup = useWindowPopup();

@@ -1,6 +1,20 @@
 import getData from "../../src/utils/getData";
 import config from "../../src/config";
 
+const _headers = {
+  "Content-Type": "application/json",
+  "Access-Control-Allow-Origin": "*",
+  "Access-Control-Allow-Headers": "Content-Type",
+  "Access-Control-Allow-Methods": "OPTIONS,POST",
+};
+
+function reply(data: any, status) {
+  return new Response(JSON.stringify(data), {
+    status,
+    headers: _headers,
+  });
+}
+
 /**
  * POST /api/getToken
  * get access token from github api
@@ -17,24 +31,14 @@ export async function onRequestPost(context: any) {
     },
   });
   const data = await res.json();
-  return new Response(JSON.stringify(data), {
-    headers: {
-      "content-type": "application/json",
-      "Access-Control-Allow-Origin": "*",
-    },
-    status: data.error ? 400 : res.status,
-  });
+
+  return reply(data, data.error ? 400 : 200);
 }
+
 /**
  * OPTIONS /api/getToken
  * handle preflight request
  */
 export async function onRequestOptions(context: any) {
-  return new Response(null, {
-    headers: {
-      "Access-Control-Allow-Origin": "*",
-      "Access-Control-Allow-Methods": "POST, OPTIONS",
-      "Access-Control-Allow-Headers": "Content-Type",
-    },
-  });
+  return reply(null, 200);
 }
