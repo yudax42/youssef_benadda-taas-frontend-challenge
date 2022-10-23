@@ -1,10 +1,10 @@
-import type Repository from "@/types/repository";
-
-function normalizeRepos(repos: Repository[]): Record<string, Repository> {
-  return repos.reduce((acc: Record<string, Repository>, repo: Repository) => {
-    acc[repo.id] = repo;
+function normalize<T>(items: T[], selector: string): Record<string, any> {
+  return items.reduce((acc: Record<string, any>, item: any) => {
+    // find the value of the selector
+    const pos = selector.split(".").reduce((acc, key) => acc[key], item);
+    acc[pos] = item;
     return acc;
   }, {});
 }
 
-export { normalizeRepos };
+export { normalize };

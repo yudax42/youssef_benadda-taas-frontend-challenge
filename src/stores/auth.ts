@@ -3,6 +3,9 @@ import { defineStore } from "pinia";
 import config from "@/config";
 import type { AuthorizationResult, AuthState } from "@/types/auth";
 import router from "@/router";
+import { userSerializer } from "@/utils/serializer";
+import type User from "@/types/user";
+import api from "@/services/api";
 
 const useAuthStore = defineStore("auth", {
   state: () => ({ _user: null, _token: null } as AuthState),
@@ -15,6 +18,10 @@ const useAuthStore = defineStore("auth", {
     setToken(token: string) {
       this._token = token;
     },
+    async setUser() {
+      const user: User = await api.getUser();
+      this._user = userSerializer(user);
+    },
     async authorizeGithub() {
       const authorizationUrl = config.authorizationUrl();
       const popup = useWindowPopup();
@@ -24,6 +31,7 @@ const useAuthStore = defineStore("auth", {
         console.log("message", message);
         if (message.type === "authorization_success") {
           this.setToken(String(message.token));
+          await this.setUser();
           router.push("/");
         } else {
           // TODO: Handle error

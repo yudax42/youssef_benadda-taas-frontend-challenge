@@ -1,8 +1,9 @@
+import type User from "./user";
+
 type _base = string | string[] | null;
 
 interface AuthState {
-  // Todo: replace any with the correct User type
-  _user: any;
+  _user: User | null;
   _token: string | null;
 }
 
