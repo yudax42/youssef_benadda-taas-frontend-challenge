@@ -25,7 +25,7 @@ const api = {
     sha: string
   ): Promise<Commits[]> {
     return request({
-      path: `/repos/${owner}/${repo}/commits?page=${page}&sha=${sha}&per_page=8`,
+      path: `/repos/${owner}/${repo}/commits?page=${page}&sha=${sha}&per_page=12`,
     });
   },
 };

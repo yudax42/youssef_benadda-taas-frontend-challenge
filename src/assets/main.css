@@ -4,6 +4,20 @@
 
 body {
   font-family: "Inter", sans-serif;
-
   @apply bg-blue-50 text-gray-700 p-5;
+}
+
+/* scrollbar */
+*::-webkit-scrollbar {
+  width: 0.4rem;
+  height: 0.4rem;
+}
+*::-webkit-scrollbar * {
+  @apply bg-transparent;
+}
+*::-webkit-scrollbar-thumb {
+  @apply bg-blue-100 rounded-full border border-blue-50;
+}
+*::-webkit-scrollbar-track {
+  @apply bg-transparent;
 }

@@ -21,7 +21,6 @@ const branchesList = computed(() => {
 
 <template>
   <div>
-    <h4 class="text-xl font-bold">Branches</h4>
     <AppListBox
       v-if="branches"
       :selected="currentBranch"
@@ -29,7 +28,6 @@ const branchesList = computed(() => {
       @update="repoStore.setCurrentBranch"
     />
 
-    <h4 class="text-xl font-bold">Commits</h4>
     <TheRepositoryCommitsList
       v-if="commits.length > 0"
       :branch="currentBranch"
@@ -38,3 +36,5 @@ const branchesList = computed(() => {
     />
   </div>
 </template>
+
+<style></style>

@@ -4,8 +4,10 @@ import RepositoryListItem from "../components/RepositoryListItem.vue";
 import TheNavbar from "@/components/TheNavbar.vue";
 import useRepoStore from "@/stores/repository";
 import AppCard from "@/components/AppCard.vue";
+import { storeToRefs } from "pinia";
 
-const { currentRepo } = useRepoStore();
+const repoStore = useRepoStore();
+const { currentRepo } = storeToRefs(repoStore);
 </script>
 
 <template>
@@ -16,13 +18,13 @@ const { currentRepo } = useRepoStore();
         <div class="repository">
           <AppCard class="repository__list">
             <template #header>
-              <h2>Repositories</h2>
+              <h2>Search</h2>
             </template>
             <RepositoryList />
           </AppCard>
-          <AppCard class="repository__list__item">
+          <AppCard v-if="currentRepo" class="repository__list__item">
             <template #header>
-              <h2>Issues</h2>
+              <h2>{{ currentRepo.name }}</h2>
             </template>
             <RepositoryListItem />
           </AppCard>

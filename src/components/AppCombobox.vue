@@ -65,13 +65,13 @@ const selectOption = (value: string) => {
   @apply relative flex flex-wrap items-center  justify-between;
 }
 .combobox__search__input {
-  @apply w-full px-4 py-2 text-base font-medium text-gray-500 border border-gray-200 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent;
+  @apply w-full px-4 py-2.5 mt-2 text-base font-medium text-gray-500 border border-gray-200 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent;
 }
 .combobox__search__filters {
-  @apply absolute right-2 top-2;
+  @apply absolute right-2 top-4;
 }
 .combobox__options {
-  @apply max-h-72 overflow-y-auto;
+  @apply max-h-72 overflow-y-auto mt-2;
 }
 .combobox__option {
   @apply py-2 hover:text-white hover:bg-blue-600 transition-colors duration-150 cursor-pointer text-sm ease-in-out px-2 rounded-lg;

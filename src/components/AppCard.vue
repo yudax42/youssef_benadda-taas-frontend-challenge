@@ -14,9 +14,9 @@
   @apply bg-white rounded-lg shadow-sm  w-full;
 }
 .app-card__header {
-  @apply px-4 py-3 text-base font-medium text-gray-600;
+  @apply px-4 py-3 text-lg font-bold border-b border-gray-100 text-gray-600;
 }
 .app-card__body {
-  @apply p-4 overflow-hidden;
+  @apply p-4 px-4 overflow-hidden;
 }
 </style>

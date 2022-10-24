@@ -16,16 +16,20 @@ function selectOption(event: any) {
 </script>
 
 <template>
-  <div>
-    <select @change="selectOption" name="" id="">
-      <option
-        v-for="(option, i) in options"
-        :key="i"
-        :value="option.value"
-        :selected="option.value === selected"
-      >
-        {{ option.name }}
-      </option>
-    </select>
-  </div>
+  <select class="app__list__box" @change="selectOption" name="AppListbox">
+    <option
+      v-for="(option, i) in options"
+      :key="i"
+      :value="option.value"
+      :selected="option.value === selected"
+    >
+      {{ option.name }}
+    </option>
+  </select>
 </template>
+
+<style scoped>
+.app__list__box {
+  @apply bg-white border border-gray-200 rounded-md shadow-sm py-1 px-2 text-left cursor-pointer sm:text-sm;
+}
+</style>

@@ -23,10 +23,7 @@ useInfiniteScroll(
 </script>
 
 <template>
-  <ul ref="el" class="h-48 overflow-auto">
-    {{
-      branch
-    }}
+  <ul ref="el" class="h-96 overflow-auto mt-5">
     <li
       v-for="commit in commits"
       :key="commit.sha"
