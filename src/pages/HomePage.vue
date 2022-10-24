@@ -2,6 +2,7 @@
 import RepositoryList from "@/components/RepositoryList.vue";
 import RepositoryListItem from "../components/RepositoryListItem.vue";
 import TheNavbar from "@/components/TheNavbar.vue";
+import LoadingIcon from "@/components/icons/LoadingIcon.vue";
 import useRepoStore from "@/stores/repository";
 import AppCard from "@/components/AppCard.vue";
 import { storeToRefs } from "pinia";
@@ -31,41 +32,7 @@ const { currentRepo } = storeToRefs(repoStore);
         </div>
         <template #fallback>
           <div class="loading">
-            <svg viewBox="0 0 24 24">
-              <circle cx="18" cy="12" r="0" fill="currentColor">
-                <animate
-                  attributeName="r"
-                  begin=".67"
-                  calcMode="spline"
-                  dur="1.5s"
-                  keySplines="0.2 0.2 0.4 0.8;0.2 0.2 0.4 0.8;0.2 0.2 0.4 0.8"
-                  repeatCount="indefinite"
-                  values="0;2;0;0"
-                />
-              </circle>
-              <circle cx="12" cy="12" r="0" fill="currentColor">
-                <animate
-                  attributeName="r"
-                  begin=".33"
-                  calcMode="spline"
-                  dur="1.5s"
-                  keySplines="0.2 0.2 0.4 0.8;0.2 0.2 0.4 0.8;0.2 0.2 0.4 0.8"
-                  repeatCount="indefinite"
-                  values="0;2;0;0"
-                />
-              </circle>
-              <circle cx="6" cy="12" r="0" fill="currentColor">
-                <animate
-                  attributeName="r"
-                  begin="0"
-                  calcMode="spline"
-                  dur="1.5s"
-                  keySplines="0.2 0.2 0.4 0.8;0.2 0.2 0.4 0.8;0.2 0.2 0.4 0.8"
-                  repeatCount="indefinite"
-                  values="0;2;0;0"
-                />
-              </circle>
-            </svg>
+            <LoadingIcon />
           </div>
         </template>
       </Suspense>
@@ -79,11 +46,11 @@ const { currentRepo } = storeToRefs(repoStore);
 }
 
 .repository__list {
-  @apply col-span-2  mb-8;
+  @apply col-span-6 md:col-span-2  mb-8;
 }
 
 .repository__list__item {
-  @apply col-span-4;
+  @apply col-span-6 md:col-span-4;
 }
 .loading {
   @apply flex justify-center items-center w-full h-full;

@@ -16,7 +16,12 @@ interface Tree {
 
 interface Commit {
   author: Author;
-  committer: Author;
+  committer: null | {
+    name: string;
+    email: string;
+    date: string;
+    avatar_url: string;
+  };
   comment_count: number;
   message: string;
   tree: Tree;
@@ -34,6 +39,7 @@ interface Commits {
   url: string;
   sha: string;
   commit: Commit;
+  committer: Author;
 }
 
 interface Repository {
