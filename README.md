@@ -11,11 +11,16 @@
 
 ## **Features**
 
-- ⚡ Quickly find your repository
-- 📍 Fetch commits history of your selected repository
-- ⛓️ Branch switching
-- ✨ Clean and minimalist user interface
-- 👨‍💻 Developers friendly
+<table border="0">
+ <tr>
+    <td><img src="./docs/demo.gif" width=300 /></td>
+    <td>⚡ Quickly find your repository<br>
+📍 Fetch commits history of your selected repository
+<br> ⛓️ Branch switching 
+<br> ✨ Clean and minimalist user interface
+<br> 👨‍💻 Developers friendly</td>
+ </tr>
+</table>
 
 ## **Try it Online ⚡**
 
