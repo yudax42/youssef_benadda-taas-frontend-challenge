@@ -23,7 +23,7 @@ const { user } = useAuthStore();
 
 <style scoped>
 .nav {
-  @apply flex justify-between items-center bg-white rounded-lg shadow-lg p-4 relative top-0;
+  @apply flex justify-between items-center  rounded-lg  py-4 relative top-0;
 }
 .nav .nav__logo {
   @apply text-xl font-bold text-gray-800;
