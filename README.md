@@ -1,8 +1,8 @@
 <br>
 <p align=center>
-<img src="./docs/yougit.png" width=100 >
+<img src="./docs/yougit.png" width=168 >
 <p>
-<p align=center>YouGit allows you to rapidly navigate your github projects and preview your commits history for different branches.</p>
+<p align=center>YouGit allows you to rapidly navigate your github projects<br> and preview your commits history for different branches.</p>
 <p align=center>
 <a href="https://youcan.yudax.me">Live Demo</a>  | 
 <a href="https://github.com/NextmediaMa/coding-challenges/tree/master/Junior%20Software%20Engineer%20-%20Frontend%20(VueJS)">Challenge Link</a>
