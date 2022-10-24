@@ -17,15 +17,9 @@
 - ✨ Clean and minimalist user interface
 - 👨‍💻 Developers friendly
 
-<br>
-
 ## **Try it Online ⚡**
 
 [https://youcan.yudax.me](https://youcan.yudax.me)
-
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](<[https://stackblitz.com/github/yudax42/youssef_benadda-taas-frontend-challenge](https://stackblitz.com/github/yudax42/youssef_benadda-taas-frontend-challenge)>)
-
-<br>
 
 ## **Usage**
 
@@ -35,18 +29,30 @@
      npm install wrangler
    ```
 
-2. Run npm install
+2. Create a Github OAuth App
+
+   [Guide](https://docs.github.com/en/developers/apps/building-oauth-apps/creating-an-oauth-app)
+
+3. Copy `.dev.vars.template` to `.dev.vars` replace you `client_secret`
+
+   ```
+    CLIENT_SECRET = "***************"
+   ```
+
+4. Replace `client_id` inside `src/config/index.ts`
+   ```
+   clientId: ''
+   ```
+5. Run npm install
 
    ```
      npm install
    ```
 
-3. Run dev mode
+6. Run dev mode
    ```
      npm run dev
    ```
-
-<br>
 
 ## **Tech Stack**
 
@@ -56,8 +62,6 @@
 - [Vite](https://vitejs.dev/)
 - [Cloudflare Pages + Functions](https://developers.cloudflare.com/pages/platform/functions/)
 
-<br>
-
 ## **Resources**
 
 - [OAuth](https://docs.github.com/en/developers/apps/building-oauth-apps/creating-an-oauth-app)
@@ -66,8 +70,6 @@
 - [API - branches](https://docs.github.com/en/rest/branches/branches)
 - [API - commits](https://docs.github.com/en/rest/commits/commits)
 - [UX - Mockup](https://app.moqups.com/sZB0qKZrxH/view/page/a34175fd3)
-
-<br>
 
 ## **CheckList**
 
@@ -81,8 +83,6 @@
 - [x] User Interface enhancement
 - [x] Create Documentation
 - [x] Test & Deployment
-
-<br>
 
 ## **Author**
 
