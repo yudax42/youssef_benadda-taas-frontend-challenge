@@ -11,12 +11,12 @@
 
 <style>
 .app-card {
-  @apply bg-white rounded-lg shadow-lg w-full;
+  @apply bg-white rounded-lg shadow-sm  w-full;
 }
 .app-card__header {
-  @apply px-4 py-3 text-2xl font-medium text-gray-600;
+  @apply px-4 py-3 text-base font-medium text-gray-600;
 }
 .app-card__body {
-  @apply p-4;
+  @apply p-4 overflow-hidden;
 }
 </style>

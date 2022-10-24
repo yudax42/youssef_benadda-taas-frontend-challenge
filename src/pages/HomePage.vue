@@ -73,15 +73,15 @@ const { currentRepo } = useRepoStore();
 
 <style scoped>
 .repository {
-  @apply flex-col lg:flex justify-start gap-4 items-start;
+  @apply grid grid-cols-1 md:grid-cols-6 gap-4 items-start;
 }
 
 .repository__list {
-  @apply w-full md:w-2/6 mb-8;
+  @apply col-span-2  mb-8;
 }
 
 .repository__list__item {
-  @apply w-full md:w-4/6;
+  @apply col-span-4;
 }
 .loading {
   @apply flex justify-center items-center w-full h-full;
