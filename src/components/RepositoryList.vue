@@ -20,7 +20,6 @@ const repositoryList = computed(() => {
 
 <template>
   <div>
-    <h3>Search a repository</h3>
     <AppCombobox
       :options="repositoryList"
       :selected-option="currentRepo?.name"

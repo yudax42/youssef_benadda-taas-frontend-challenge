@@ -49,6 +49,7 @@ function commitSerializer(commit: Commits): Commits {
     url: commit.url,
     sha: commit.sha,
     commit: commit.commit,
+    committer: commit.committer,
   };
 }
 
