@@ -30,12 +30,12 @@ const useAuthStore = defineStore("auth", {
       const authorizationUrl = config.authorizationUrl();
       const popup = useWindowPopup();
       popup.open(authorizationUrl, 600, 600);
-      popup.onMessage(async (event: MessageEvent) => {
+      popup.onMessage((event: MessageEvent) => {
         const message: AuthorizationResult = event.data;
-        console.log("message", message);
+
         if (message.type === "authorization_success") {
           this.setToken(String(message.token));
-          await this.setUser();
+          this.setUser();
           addAlert({
             message: "Your Github account was successfully authorized",
             type: "success",
@@ -43,7 +43,7 @@ const useAuthStore = defineStore("auth", {
           router.push("/");
         } else {
           addAlert({
-            message: "Authorization failed",
+            message: String(message.errorDescription),
             type: "error",
           });
         }

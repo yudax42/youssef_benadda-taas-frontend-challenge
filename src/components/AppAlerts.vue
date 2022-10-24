@@ -4,7 +4,6 @@ import AppAlertsItem from "./AppAlertsItem.vue";
 import FadeInTransition from "./FadeInTransition.vue";
 
 const { alerts } = useAlerts;
-console.log(alerts.value);
 </script>
 
 <template>

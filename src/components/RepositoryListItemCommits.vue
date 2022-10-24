@@ -15,6 +15,7 @@ defineProps<{
 }>();
 
 const el = ref<HTMLElement>();
+
 useInfiniteScroll(
   el,
   () => {
@@ -31,8 +32,8 @@ function getRelativeTime(time?: string) {
 function name(commit: Commits) {
   return (
     commit.committer?.login ||
-    commit.commit?.committer?.name ||
     commit.committer?.name ||
+    commit.commit?.committer?.name ||
     "Unknown"
   );
 }

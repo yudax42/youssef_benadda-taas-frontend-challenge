@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import { storeToRefs } from "pinia";
-import { computed, ref } from "vue";
+import { computed } from "vue";
 import useRepoStore from "@/stores/repository";
 import type { Branch } from "@/types/repository";
 import AppListBox from "@/components/AppListbox.vue";
@@ -20,7 +20,7 @@ const branchesList = computed(() => {
 </script>
 
 <template>
-  <div>
+  <section>
     <AppListBox
       v-if="branches"
       :selected="currentBranch"
@@ -34,7 +34,7 @@ const branchesList = computed(() => {
       :commits="commits"
       @next-page="repoStore.getCommits"
     />
-  </div>
+  </section>
 </template>
 
 <style></style>

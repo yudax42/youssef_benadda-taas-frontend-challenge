@@ -19,8 +19,7 @@ async function getGithubAccessToken(code: string, redirect_uri: string) {
     }
     return await res.json();
   } catch (error) {
-    // TODO: handle error
-    console.log(error);
+    console.error(error);
   }
 }
 

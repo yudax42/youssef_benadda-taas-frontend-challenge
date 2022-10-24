@@ -1,12 +1,12 @@
 <script lang="ts" setup>
 import { defineProps, ref } from "vue";
 
-let emit = defineEmits(["update"]);
-
 interface ListBox {
   selected?: string | null;
   options: Record<string, string>[];
 }
+
+const emit = defineEmits(["update"]);
 
 defineProps<ListBox>();
 

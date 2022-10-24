@@ -1,11 +1,8 @@
 <script lang="ts" setup>
-import { computed, defineProps, ref } from "vue";
 import AppListbox from "@/components/AppListbox.vue";
 import randomId from "@/utils/randomId";
+import { computed, defineProps, ref } from "vue";
 
-const emit = defineEmits(["select"]);
-
-const search = ref("");
 interface ComboBox {
   options: Record<string, string>[];
   filters: Record<string, string>[];
@@ -13,6 +10,8 @@ interface ComboBox {
   selectedFilter: string;
 }
 
+const emit = defineEmits(["select"]);
+const search = ref("");
 const props = defineProps<ComboBox>();
 
 const filtered = computed(() => {
@@ -23,10 +22,10 @@ const filtered = computed(() => {
   });
 });
 
-const selectOption = (value: string) => {
+function selectOption(value: string) {
   emit("select", value);
   search.value = "";
-};
+}
 </script>
 
 <template>

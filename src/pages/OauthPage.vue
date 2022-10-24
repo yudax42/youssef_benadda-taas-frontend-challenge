@@ -8,7 +8,6 @@ const { sendMessage, close } = useWindowPopup();
 
 onBeforeMount(async () => {
   const authorizationResult: AuthorizationResult = await useTokenFetcher();
-  console.log("authorizationResult", authorizationResult);
   sendMessage(authorizationResult);
   close();
 });

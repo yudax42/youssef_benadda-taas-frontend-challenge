@@ -1,12 +1,11 @@
 <script lang="ts" setup>
-import { storeToRefs } from "pinia";
-import useRepoStore from "@/stores/repository";
 import AppCombobox from "./AppCombobox.vue";
+import useRepoStore from "@/stores/repository";
+import { storeToRefs } from "pinia";
 import { computed } from "vue";
 
 const repoStore = useRepoStore();
 const { repos, currentRepo } = storeToRefs(repoStore);
-await repoStore.getRepos();
 
 const repositoryList = computed(() => {
   return repos.value.map((repo) => {
@@ -16,10 +15,12 @@ const repositoryList = computed(() => {
     };
   });
 });
+
+await repoStore.getRepos();
 </script>
 
 <template>
-  <div>
+  <section>
     <AppCombobox
       :options="repositoryList"
       :selected-option="currentRepo?.name"
@@ -27,5 +28,5 @@ const repositoryList = computed(() => {
       selected-filter="name"
       @select="repoStore.setCurrentRepo"
     />
-  </div>
+  </section>
 </template>

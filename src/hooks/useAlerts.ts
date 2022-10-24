@@ -9,9 +9,11 @@ function addAlert(alert: Alert) {
   alerts.value.push({ id, ...alert });
   setTimeout(() => removeAlert(id), 3000);
 }
+
 function removeAlert(id: string) {
   alerts.value = alerts.value.filter((a) => a.id !== id);
 }
+
 export default {
   alerts,
   addAlert,
