@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import { onBeforeMount } from "vue";
-import useWindowPopup from "@/hooks/useWindowPopup";
-import useTokenFetcher from "@/hooks/useTokenFetcher";
+import useWindowPopup from "@/composables/useWindowPopup";
+import useTokenFetcher from "@/composables/useTokenFetcher";
 import type { AuthorizationResult } from "@/types/auth";
 
 const { sendMessage, close } = useWindowPopup();

@@ -7,7 +7,7 @@ import AuthPage from "@/pages/AuthPage.vue";
 import HomePage from "@/pages/HomePage.vue";
 import OauthPage from "@/pages/OauthPage.vue";
 
-import useAuthentication from "@/hooks/routes/auth";
+import useAuthentication from "@/composables/routes/auth";
 
 const routes = [
   {

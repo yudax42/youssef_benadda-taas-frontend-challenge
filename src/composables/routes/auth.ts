@@ -1,6 +1,5 @@
 import useAuthStore from "@/stores/auth";
 import type { NavigationGuardNext, RouteLocationNormalized } from "vue-router";
-import { storeToRefs } from "pinia";
 
 function useAuthentication() {
   return {

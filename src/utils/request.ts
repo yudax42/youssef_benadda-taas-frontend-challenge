@@ -1,7 +1,7 @@
 import config from "@/config";
 import useAuthStore from "@/stores/auth";
 import type RequestData from "@/types/request";
-import useAlert from "@/hooks/useAlerts";
+import useAlert from "@/composables/useAlerts";
 
 const { addAlert } = useAlert;
 const headers: any = {
@@ -9,7 +9,7 @@ const headers: any = {
   Accept: "application/vnd.github+json",
 };
 
-async function useRequest<T>(data: RequestData): Promise<T> {
+async function request<T>(data: RequestData): Promise<T> {
   const auth = useAuthStore();
   const { path, method = "GET", data: body } = data;
 
@@ -28,7 +28,8 @@ async function useRequest<T>(data: RequestData): Promise<T> {
     message: await res.text(),
     type: "error",
   });
+
   throw new Error(res.statusText);
 }
 
-export default useRequest;
+export default request;

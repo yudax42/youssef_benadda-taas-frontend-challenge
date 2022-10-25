@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import useAlerts from "@/hooks/useAlerts";
+import useAlerts from "@/composables/useAlerts";
 import AppAlertsItem from "./AppAlertsItem.vue";
 import FadeInTransition from "./FadeInTransition.vue";
 

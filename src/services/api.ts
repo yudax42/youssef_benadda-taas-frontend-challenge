@@ -1,6 +1,6 @@
 import type { Repository, Commits, Branch } from "@/types/repository";
 import type User from "@/types/user";
-import request from "@/hooks/useRequest";
+import request from "@/utils/request";
 
 const api = {
   getUser(): Promise<User> {

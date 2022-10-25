@@ -1,4 +1,4 @@
-import useWindowPopup from "@/hooks/useWindowPopup";
+import useWindowPopup from "@/composables/useWindowPopup";
 import { defineStore } from "pinia";
 import config from "@/config";
 import type { AuthorizationResult, AuthState } from "@/types/auth";
@@ -6,7 +6,7 @@ import router from "@/router";
 import { userSerializer } from "@/utils/serializer";
 import type User from "@/types/user";
 import api from "@/services/api";
-import useAlert from "@/hooks/useAlerts";
+import useAlert from "@/composables/useAlerts";
 
 const { addAlert } = useAlert;
 const useAuthStore = defineStore("auth", {
