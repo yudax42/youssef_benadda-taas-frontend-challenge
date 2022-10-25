@@ -1,12 +1,10 @@
 import api from "@/services/api";
 import type { Repository, Commits, Branch } from "@/types/repository";
 import { normalize } from "@/utils/normalizer";
-import {
-  branchSerializer,
-  commitSerializer,
-  repoSerializer,
-} from "@/utils/serializer";
+import Factory from "@/utils/factory";
 import { defineStore } from "pinia";
+
+const factory = new Factory();
 
 const useRepoStore = defineStore("repo", {
   state: () => ({
@@ -27,32 +25,34 @@ const useRepoStore = defineStore("repo", {
 
   actions: {
     async getRepos() {
-      const repos: Repository[] = await api.getRepos();
-      const seralizedRepos = repos.map(repoSerializer);
-      this._repos = normalize(seralizedRepos, "id");
+      const data: Repository[] = await api.getRepos();
+      const repositories = data.map((repo) =>
+        factory.create("repository", repo)
+      );
+      this._repos = normalize(repositories, "id");
     },
 
     async getBranches() {
-      const branches = await api.getBranches(
+      const data: Branch[] = await api.getBranches(
         this.currentRepo.owner.login,
         this.currentRepo.name
       );
-      const serializedBranches = branches.map(branchSerializer);
-      this._branches = normalize(serializedBranches, "commit.sha");
+      const branches = data.map((branch) => factory.create("branch", branch));
+      this._branches = normalize(branches, "commit.sha");
       this._currentBranch = branches[0].commit.sha;
     },
 
     async getCommits(page: number = 1, master?: boolean) {
-      const commits = await api.getCommits(
+      const data: Commits[] = await api.getCommits(
         this.currentRepo.name,
         this.currentRepo.owner.login,
         page,
         master ? "" : this._currentBranch
       );
-      const serializedCommits = commits.map(commitSerializer);
+      const commits = data.map((commit) => factory.create("commit", commit));
       this._commits = {
         ...this._commits,
-        ...normalize(serializedCommits, "sha"),
+        ...normalize(commits, "sha"),
       };
     },
 

@@ -1,7 +1,7 @@
 import type { Author, Branch, Commits, Repository } from "@/types/repository";
 import type User from "@/types/user";
 
-function userSerializer(user: User): User {
+function user(user: User): User {
   return {
     login: user.login,
     id: user.id,
@@ -19,7 +19,7 @@ function userSerializer(user: User): User {
   };
 }
 
-function repoSerializer(repo: Repository): Repository {
+function repo(repo: Repository): Repository {
   return {
     id: repo.id,
     name: repo.name,
@@ -30,13 +30,13 @@ function repoSerializer(repo: Repository): Repository {
   };
 }
 
-function branchSerializer(branch: Branch): Branch {
+function branch(branch: Branch): Branch {
   return {
     name: branch.name,
     commit: branch.commit,
   };
 }
-function authorSerializer(author: Author): Author {
+function author(author: Author): Author {
   return {
     name: author.name,
     avatar_url: author.avatar_url,
@@ -44,7 +44,7 @@ function authorSerializer(author: Author): Author {
   };
 }
 
-function commitSerializer(commit: Commits): Commits {
+function commit(commit: Commits): Commits {
   return {
     url: commit.url,
     sha: commit.sha,
@@ -53,4 +53,23 @@ function commitSerializer(commit: Commits): Commits {
   };
 }
 
-export { userSerializer, repoSerializer, branchSerializer, commitSerializer };
+class Factory {
+  create(type: string, data: any) {
+    switch (type) {
+      case "user":
+        return user(data);
+      case "repository":
+        return repo(data);
+      case "branch":
+        return branch(data);
+      case "author":
+        return author(data);
+      case "commit":
+        return commit(data);
+      default:
+        return data;
+    }
+  }
+}
+
+export default Factory;

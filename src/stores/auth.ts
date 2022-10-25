@@ -3,11 +3,12 @@ import { defineStore } from "pinia";
 import config from "@/config";
 import type { AuthorizationResult, AuthState } from "@/types/auth";
 import router from "@/router";
-import { userSerializer } from "@/utils/serializer";
+import Factory from "@/utils/factory";
 import type User from "@/types/user";
 import api from "@/services/api";
 import useAlert from "@/composables/useAlerts";
 
+const factory = new Factory();
 const { addAlert } = useAlert;
 const useAuthStore = defineStore("auth", {
   state: () => ({ _user: null, _token: null } as AuthState),
@@ -23,7 +24,7 @@ const useAuthStore = defineStore("auth", {
 
     async setUser() {
       const user: User = await api.getUser();
-      this._user = userSerializer(user);
+      this._user = factory.create("user", user);
     },
 
     async authorizeGithub() {
